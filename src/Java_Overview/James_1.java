@@ -2,7 +2,7 @@ package Java_Overview;
 
 import java.util.Scanner;
 
-public class james_1 {
+public class James_1 {
     public static void main(String[] args) {
         Scanner str = new Scanner(System.in);
         Scanner num = new Scanner(System.in);

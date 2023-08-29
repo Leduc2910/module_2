@@ -2,7 +2,7 @@ package Java_Overview;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
 //                                              BIẾN
         int a;
