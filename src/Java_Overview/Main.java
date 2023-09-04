@@ -31,7 +31,7 @@ public class Main {
 //                                              Các loại toán tử
         /*
         * Toán tử số học : +  -  * /  ++ --
-        * Toán tử gán : += -= *= /=
+        * Toán tử gán : += -= *= /= %= =
         * Toán tử so sánh : == != < > <= >=
         * Toán tử logic : && || ! & |
         */
