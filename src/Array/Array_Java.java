@@ -1,5 +1,8 @@
 package Array;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Array_Java {
     public static void main(String[] args) {
 //                                      Tham trị và tham chiếu
@@ -18,10 +21,10 @@ public class Array_Java {
 
 //                                      Mảng
         /*Mảng là một biến tham chiếu đến một loạt các giá trị liên tiếp nhau
-        * Các giá trị được lưu trữ trong mảng có cùng kiểu dữ liệu*/
+         * Các giá trị được lưu trữ trong mảng có cùng kiểu dữ liệu*/
         // Khai báo mảng
-        int[] songuyen = {1,2,3,4};
-        String[] chuoi = {"Hello","Hi"};
+        int[] songuyen = {1, 2, 3, 4};
+        String[] chuoi = {"Hello", "Hi"};
         // Khi khao báo các biến kiểu dữ liệu NGUYÊN THỦY thì chúng được cấp bộ nhớ tương ứng để lưu trữ dữ liệu (tham trị)
         // Khi khai báo biến MẢNG thì sẽ cấp phát bộ nhớ tham chiếu đến mảng (tham chiếu)
 
@@ -33,9 +36,55 @@ public class Array_Java {
             return gia_tri;
         }
         */
-        System.out.println(cal(5,5));
+//        System.out.println(cal(5,5));
+
+//                                      Thao tác với mảng
+        int[] arr = new int[5];
+        int size = 0;
+        size = push(arr, 5, size);
+        size = push(arr, 10, size);
+        size = push(arr, -2, size);
+        size = push(arr, 90, size);
+        size = push(arr, 11, size);
+        System.out.println("Mảng ban đầu : " + Arrays.toString(arr));
+        System.out.println("Size : " + size);
+        System.out.println("Vị trí số cần tìm : " + search(arr, 10, size));
+        change(arr, 20, 0);
+        System.out.println("Mảng sau khi đổi : " + Arrays.toString(arr));
+        size = delete(arr, 20, size);
+        System.out.println("Mảng sau khi xóa : " + Arrays.toString(arr));
     }
+
+    public static int push(int[] arr, int element, int size) {
+        arr[size] = element;
+        size++;
+        return size;
+    }
+
+    public static int search(int[] arr, int element, int size) {
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void change(int[] arr, int element, int index) {
+        arr[index] = element;
+    }
+
+    public static int delete(int[] arr, int element, int size) {
+        int index = search(arr, element, size);
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[size - 1] = 0;
+        size--;
+        return size;
+    }
+
     public static int cal(int num1, int num2) {
-        return num1+num2;
+        return num1 + num2;
     }
 }
