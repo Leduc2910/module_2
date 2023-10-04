@@ -1,5 +1,7 @@
 package CTDL_GT;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Level1 {
@@ -24,6 +26,7 @@ public class Level1 {
         bai13(arr);
         bai14(arr);
         bai15(arr);
+        bai16(arr);
     }
 
     public static void isOddOrEven(int n) {
@@ -219,5 +222,29 @@ public class Level1 {
             }
         }
         System.out.println("Mang tang dan");
+    }
+
+    public static void bai16(int[] arr) {
+        Map<Integer, Integer> countNum = new HashMap<>();
+        for (int num : arr) {
+            if (countNum.containsKey(num)) {
+                countNum.put(num, countNum.get(num) + 1);
+            } else {
+                countNum.put(num, 1);
+            }
+        }
+        for (Integer num :
+                countNum.keySet()) {
+            System.out.println("Phần tử " + num + " xuất hiện " + countNum.get(num) + " lần");
+        }
+    }
+
+    public static void bai17(int[] arr1, int[] arr2) {
+        boolean[] used = new boolean[arr1.length];
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[i] && arr1[i])
+            }
+        }
     }
 }

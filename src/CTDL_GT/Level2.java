@@ -8,12 +8,13 @@ public class Level2 {
         bai8(7, 3);
         bai9();
         bai10(2, 2, 3);
-        int[] arr = {10, -2, 1, -4, 5, 2, 9, 10};
+        int[] arr = {10, -2, 1, -4, 5, 9, 10};
+        int[] arr2 = {10, -2, 1, -4, 5, 2, 9, 10,20,21,21,23};
         bai11(arr);
         bai12(arr);
         bai13(arr);
         bai14(arr);
-        bai15(arr);
+        bai15(arr, arr2);
     }
 
     public static void bai5(int n) {
@@ -132,7 +133,21 @@ public class Level2 {
         System.out.println(sum);
     }
 
-    public static void bai15(int[] arr) {
-        
+    public static void bai15(int[] arr1, int[] arr2) {
+        boolean check = false;
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] != arr2[j]) {
+                    check = true;
+                    break;
+                }
+            }
+            if (check) {
+                System.out.println("Tất cả mảng A không thuộc mảng B");
+                return;
+            }
+        }
+        System.out.println("Tất cả mảng A thuộc mảng B");
+
     }
 }
