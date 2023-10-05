@@ -29,13 +29,40 @@ public class ProductManager implements IManager<Product> {
     }
 
     @Override
-    public void edit(int id, Product product) {
-        int index = findById(id);
+    public void edit(int index, Product product) {
         listProduct.set(index, product);
     }
 
     @Override
     public ArrayList<Product> showAll() {
         return listProduct;
+    }
+
+    public void searchByName(String name) {
+        for (Product product :
+                listProduct) {
+            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    public void searchCategorize(String categorize) {
+        for (Product product :
+                listProduct) {
+            if (product.getCategorize().toLowerCase().contains(categorize.toLowerCase())) {
+                System.out.println(product);
+            }
+        }
+    }
+
+    public void searchById(int id) {
+        for (Product product :
+                listProduct) {
+            if (product.getId() == id) {
+                System.out.println(product);
+                break;
+            }
+        }
     }
 }

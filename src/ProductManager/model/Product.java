@@ -70,9 +70,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return id + ". Name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", categorize='" + categorize + '\'';
+        return id + ". Name= '" + name + '\'' +
+                ", quantity= " + quantity +
+                ", price= " + price +
+                ", categorize= '" + categorize + '\'';
     }
 }

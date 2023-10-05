@@ -34,17 +34,22 @@ public class Menu {
                         showMenuAdd();
                         break;
                     case 2:
+                        showMenuEdit();
                         break;
                     case 3:
+                        showMenuDelete();
                         break;
                     case 4:
                         showMenuShow();
                         break;
                     case 5:
+                        searchByName();
                         break;
                     case 6:
+                        searchCategorize();
                         break;
                     case 7:
+                        searchById();
                         break;
                     default:
                         System.out.println("Thoát thành công!!!");
@@ -72,6 +77,60 @@ public class Menu {
         System.out.println("Thêm thành công!!!\n");
     }
 
+    public void showMenuEdit() {
+        System.out.print("\nSửa sản phẩm có id: ");
+        int id = inputNum.nextInt();
+        int index = listProduct.findById(id);
+        if (index == -1) {
+            System.out.println("Không có sản phẩm trong danh sách!!!\n");
+            return;
+        }
+        System.out.print("Nhập tên sản phẩm: ");
+        String name = inputStr.nextLine();
+        System.out.print("Nhập số lượng sản phẩm: ");
+        int quantity = inputNum.nextInt();
+        System.out.print("Nhập giá sản phẩm: ");
+        double price = inputNum.nextInt();
+        System.out.print("Nhập loại sản phẩm: ");
+        String categorize = inputStr.nextLine();
+        Product product = new Product(id, name, quantity, price, categorize);
+        listProduct.edit(index, product);
+        System.out.println("Sửa thành công!!!\n");
+    }
+
+    public void showMenuDelete() {
+        System.out.print("\nNhập id cần xóa: ");
+        int id = inputNum.nextInt();
+        int index = listProduct.findById(id);
+        if (index == -1) {
+            System.out.println("Không có sản phẩm trong danh sách!!!\n");
+            return;
+        }
+        listProduct.delete(id);
+        System.out.println("Xóa thành công!!!\n");
+    }
+
+    public void searchByName() {
+        System.out.print("Nhập tên sản phẩm cần tìm: ");
+        String name = inputStr.nextLine();
+        listProduct.searchByName(name);
+        System.out.println();
+    }
+
+    public void searchCategorize() {
+        System.out.print("Nhập loại sản phẩm cần tìm: ");
+        String categorize = inputStr.nextLine();
+        listProduct.searchCategorize(categorize);
+        System.out.println();
+    }
+
+    public void searchById() {
+        System.out.print("Nhập id sản phẩm cần tìm: ");
+        int id = inputNum.nextInt();
+        listProduct.searchById(id);
+        System.out.println();
+    }
+
     public void showMenuShow() {
         System.out.println("Danh sách sản phẩm hiện tại: ");
         ArrayList<Product> list = listProduct.showAll();
@@ -81,4 +140,5 @@ public class Menu {
         }
         System.out.println();
     }
+
 }
