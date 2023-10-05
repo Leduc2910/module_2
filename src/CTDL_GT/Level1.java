@@ -243,7 +243,6 @@ public class Level1 {
         boolean[] used = new boolean[arr1.length];
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
-                if (arr1[i] == arr2[i] && arr1[i])
             }
         }
     }
