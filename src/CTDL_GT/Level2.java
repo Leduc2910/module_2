@@ -1,5 +1,11 @@
 package CTDL_GT;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Level2 {
     public static void main(String[] args) {
         bai5(5);
@@ -9,12 +15,17 @@ public class Level2 {
         bai9();
         bai10(2, 2, 3);
         int[] arr = {10, -2, 1, -4, 5, 9, 10};
-        int[] arr2 = {10, -2, 1, -4, 5, 2, 9, 10,20,21,21,23};
+        int[] arr2 = {10, -2, 1, -4, 5, 2, 9, 10, 20, 21, 21, 23};
         bai11(arr);
         bai12(arr);
         bai13(arr);
         bai14(arr);
         bai15(arr, arr2);
+        bai16(arr);
+        System.out.println(Arrays.toString(bai17(arr2)));
+        System.out.println(Arrays.toString(bai18(arr2)));
+        System.out.println(Arrays.toString(bai19(arr2)));
+        System.out.println(bai20(3));
     }
 
     public static void bai5(int n) {
@@ -126,8 +137,8 @@ public class Level2 {
     public static void bai14(int[] arr) {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] %3 == 0) {
-                sum+=arr[i];
+            if (arr[i] % 3 == 0) {
+                sum += arr[i];
             }
         }
         System.out.println(sum);
@@ -149,5 +160,96 @@ public class Level2 {
         }
         System.out.println("Tất cả mảng A thuộc mảng B");
 
+    }
+
+    public static void bai16(int[] arr) {
+        Map<Integer, Integer> result = new HashMap<>();
+        for (int num : arr) {
+            if (!result.containsKey(num)) {
+                result.put(num, 1);
+            } else {
+                result.put(num, result.get(num) + 1);
+            }
+        }
+        for (Integer key : result.keySet()) {
+            if (result.get(key) == 1) {
+                System.out.print(key + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static int[] bai17(int[] arr) {
+        int maxLength = 0;
+        int currentLength = 1;
+        int maxIndexStart = 0;
+        int indexStart = 0;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] >= arr[i - 1]) {
+                currentLength++;
+            } else {
+                currentLength = 1;
+                indexStart = i;
+            }
+            if (currentLength > maxLength) {
+                maxLength = currentLength;
+                maxIndexStart = indexStart;
+            }
+        }
+        int[] resutl = new int[maxLength];
+        for (int i = 0; i < maxLength; i++) {
+            resutl[i] = arr[maxIndexStart + i];
+        }
+        return resutl;
+    }
+
+    public static int[] bai18(int[] arr) {
+        int currentLength = 1;
+        int maxLength = 0;
+        int startIndex = 0;
+        int maxStartIndex = 0;
+        int sum = arr[startIndex];
+        int maxSum = Integer.MIN_VALUE;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) {
+                currentLength++;
+                sum += arr[i];
+            } else {
+                sum = arr[i];
+                currentLength = 1;
+                startIndex = i;
+            }
+            if (sum > maxSum) {
+                maxSum = sum;
+                maxLength = currentLength;
+                maxStartIndex = startIndex;
+            }
+        }
+        int[] result = new int[maxLength];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = arr[maxStartIndex + i];
+        }
+        return result;
+    }
+
+    public static int[] bai19(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] % 2 != 0) {
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[j] % 2 == 0) {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        }
+        return arr;
+    }
+
+    public static int bai20(int n) {
+        if (n == 1) return 1;
+        return n * bai20(n - 1);
     }
 }

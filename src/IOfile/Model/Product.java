@@ -23,7 +23,11 @@ public class Product {
     }
 
     public Product(String name, int quantity, double price, String categorize) {
-        this.id = readAndWriteProductList.readFile().get(readAndWriteProductList.readFile().size()-1).getId() + 1;
+        if (readAndWriteProductList.readFile().size() != 0) {
+            this.id = readAndWriteProductList.readFile().get(readAndWriteProductList.readFile().size() - 1).getId() + 1;
+        } else {
+            this.id = 1;
+        }
         this.name = name;
         this.quantity = quantity;
         this.price = price;

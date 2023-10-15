@@ -1,5 +1,8 @@
 package CTDL_GT;
 
+import Access_modifier.a.A;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -27,6 +30,10 @@ public class Level1 {
         bai14(arr);
         bai15(arr);
         bai16(arr);
+        bai17(new int[]{2, 1, 3, 4, 2, 2, 1}, new int[]{1, 3, 2, 5, 4, 7});
+        bai18(new int[]{2, 1, 3, 4, 2, 2, 1});
+        bai19(4, new int[]{2, 1, 3, 4, 2, 2, 1});
+        System.out.println(bai20(3));
     }
 
     public static void isOddOrEven(int n) {
@@ -240,10 +247,52 @@ public class Level1 {
     }
 
     public static void bai17(int[] arr1, int[] arr2) {
-        boolean[] used = new boolean[arr1.length];
+        ArrayList<Integer> arr = new ArrayList<>();
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
+                if (arr1[i] == arr2[j] && !arr.contains(arr1[i])) {
+                    System.out.print(arr1[i] + " ");
+                    arr.add(arr1[i]);
+                }
             }
         }
+        System.out.println();
+    }
+
+    public static void bai18(int[] arr) {
+        int product = Integer.MIN_VALUE;
+        int index1 = 0, index2 = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] * arr[j] > product) {
+                    product = arr[i] * arr[j];
+                    index1 = i;
+                    index2 = j;
+                }
+            }
+        }
+        System.out.println("Hai số có tích lớn nhất: \nSo thu nhat: " + arr[index1] + "\nSo thu 2: " + arr[index2]);
+    }
+
+    public static void bai19(int value, int[] arr) {
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == value) {
+                    String str = "[" + arr[i] + ", " + arr[j] + "]";
+                    result.add(str);
+                }
+            }
+        }
+        for (String str :
+                result) {
+            System.out.print(str + " ");
+        }
+        System.out.println();
+    }
+
+    public static int bai20(int n) {
+        if (n == 1) return 1;
+        return n + bai20(n - 1);
     }
 }

@@ -35,6 +35,7 @@ public class ReadAndWriteProductList {
                 Product product = new Product(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]), data[4]);
                 list.add(product);
             }
+            bufferedReader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

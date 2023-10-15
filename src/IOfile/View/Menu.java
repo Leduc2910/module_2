@@ -2,6 +2,7 @@ package IOfile.View;
 
 import IOfile.Manager.ProductManager;
 import IOfile.Model.Product;
+import IOfile.input.Input;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -64,28 +65,10 @@ public class Menu {
         System.out.println("\nĐang thêm mới sản phẩm....");
         System.out.print("Nhập tên sản phẩm: ");
         String name = inputStr.nextLine();
-        int quantity;
-        while (true) {
-            System.out.print("Nhập số lượng sản phẩm: ");
-            try {
-                quantity = Integer.parseInt(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                System.out.println("Sai định dạng nhập lại!!!");
-            }
-
-        }
-        double price;
-        while (true) {
-            System.out.print("Nhập giá sản phẩm: ");
-            try {
-                price = Double.parseDouble(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                System.out.println("Sai định dạng nhập lại!!!");
-            }
-
-        }
+        System.out.print("Nhập số lượng sản phẩm: ");
+        int quantity = Input.getInputInt();
+        System.out.print("Nhập giá sản phẩm: ");
+        double price = Input.getInputDouble();
         System.out.print("Nhập loại sản phẩm: ");
         String categorize = inputStr.nextLine();
         Product product = new Product(name, quantity, price, categorize);
@@ -95,16 +78,8 @@ public class Menu {
 
     public void showMenuEdit() {
         System.out.println("\nĐang sửa sản phẩm....");
-        int id;
-        while (true) {
-            try {
-                System.out.print("Nhập id sản phẩm cần sửa: ");
-                id = Integer.parseInt(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
-        }
+        System.out.print("Nhập id cần sửa: ");
+        int id = Input.getInputInt();
         int index = list.findIndex(id);
         if (index == -1) {
             System.out.println("Không có sản phẩm nào có id này!!!\n");
@@ -112,28 +87,10 @@ public class Menu {
         }
         System.out.print("Nhập tên sản phẩm: ");
         String name = inputStr.nextLine();
-        int quantity;
-        while (true) {
-            System.out.print("Nhập số lượng sản phẩm: ");
-            try {
-                quantity = Integer.parseInt(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                System.out.println("Sai định dạng nhập lại!!!");
-            }
-
-        }
-        double price;
-        while (true) {
-            System.out.print("Nhập giá sản phẩm: ");
-            try {
-                price = Double.parseDouble(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                System.out.println("Sai định dạng nhập lại!!!");
-            }
-
-        }
+        System.out.print("Nhập số lượng sản phẩm: ");
+        int quantity = Input.getInputInt();
+        System.out.print("Nhập giá sản phẩm: ");
+        double price = Input.getInputDouble();
         System.out.print("Nhập loại sản phẩm: ");
         String categorize = inputStr.nextLine();
         Product product = new Product(id, name, quantity, price, categorize);
@@ -143,16 +100,8 @@ public class Menu {
 
     public void showMenuDelete() {
         System.out.println("\nĐang xóa sản phẩm....");
-        int id;
-        while (true) {
-            try {
-                System.out.print("Nhập id sản phẩm cần xóa: ");
-                id = Integer.parseInt(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
-        }
+        System.out.print("Nhập id cần xóa: ");
+        int id = Input.getInputInt();
         int index = list.findIndex(id);
         if (index == -1) {
             System.out.println("Không có sản phẩm nào có id này!!!\n");
@@ -197,16 +146,8 @@ public class Menu {
 
     public void searchById() {
         System.out.println("\nTìm kiếm theo id sản phẩm...");
-        int id;
-        while (true) {
-            try {
-                System.out.print("Nhập id sản phẩm cần sửa: ");
-                id = Integer.parseInt(inputNum.nextLine());
-                break;
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
-        }
+        System.out.print("Nhập id cần tìm: ");
+        int id = Input.getInputInt();
         int index = list.findIndex(id);
         if (index == -1) {
             System.out.println("Không có sản phẩm nào có id này!!!\n");
